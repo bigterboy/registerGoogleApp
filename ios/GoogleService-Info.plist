@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>207226084631-tl6kk9t381271s2pg3d7medr173apdmk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.207226084631-tl6kk9t381271s2pg3d7medr173apdmk</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>207226084631-1on7vl4i84vs3qntembcm98t26stth31.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAHY5EeYX0XLeIUaqs0dBiMvwm4jc2_yO8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>207226084631</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.soncaproject</string>
+	<key>PROJECT_ID</key>
+	<string>testapp-f2fbd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>testapp-f2fbd.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:207226084631:ios:36ff3ded5378a415956b52</string>
+	<key>DATABASE_URL</key>
+	<string>https://testapp-f2fbd.firebaseio.com</string>
+</dict>
+</plist>

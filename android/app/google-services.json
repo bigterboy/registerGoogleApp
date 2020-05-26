@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "207226084631",
+    "firebase_url": "https://testapp-f2fbd.firebaseio.com",
+    "project_id": "testapp-f2fbd",
+    "storage_bucket": "testapp-f2fbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207226084631:android:5a3b6c9897204d60956b52",
+        "android_client_info": {
+          "package_name": "com.soncaproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207226084631-crdftse1f5606pvluudhvcjtp97jjbnn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.soncaproject",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "207226084631-rmd6r7ev15qugu4d6qru82td37gp8clk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChDudwZKsMWruhn5HsbALcDSehEP8eWRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207226084631-0a4hl821dpl39fqr9bdseo8eh830m404.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "207226084631-tl6kk9t381271s2pg3d7medr173apdmk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.soncaproject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
