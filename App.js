@@ -27,18 +27,21 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import auth, { firebase } from '@react-native-firebase/auth';
+
+
 import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-community/google-signin';
 
-export default class App extends Component{
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userInfo: null,
-      gettingLoginStatus: true,
+      gettingLoginStatus: false,
     };
   }
   componentDidMount() {
@@ -50,20 +53,26 @@ export default class App extends Component{
       webClientId: '207226084631-rmd6r7ev15qugu4d6qru82td37gp8clk.apps.googleusercontent.com',
     });
     //Check if user is already signed in
-    this._isSignedIn();
+    // this._isSignedIn();
   }
 
   _isSignedIn = async () => {
-    const isSignedIn = await GoogleSignin.isSignedIn();
-    if (isSignedIn) {
-      alert('User is already signed in');
-      //Get the User details as user is already signed in
-      this._getCurrentUserInfo();
-    } else {
-      //alert("Please Login");
-      console.log('Please Login');
-    }
-    this.setState({ gettingLoginStatus: false });
+    // const isSignedIn = await GoogleSignin.isSignedIn();
+    // if (isSignedIn) {
+    //   alert('User is already signed in');
+    //   //Get the User details as user is already signed in
+    //   this._getCurrentUserInfo();
+    // } else {
+    //   //alert("Please Login");
+    //   console.log('Please Login');
+    // }
+    // this.setState({ gettingLoginStatus: false });
+
+    GoogleSignin.signIn()
+      .then(data => {
+        console.log("DATA LA: ", data)
+      })
+
   };
 
   _getCurrentUserInfo = async () => {
@@ -71,6 +80,16 @@ export default class App extends Component{
       const userInfo = await GoogleSignin.signInSilently();
       console.log('User Info --> ', userInfo);
       this.setState({ userInfo: userInfo });
+
+      // const credential = firebase.auth.
+
+      const googleCredential = auth.GoogleAuthProvider.credential(userInfo.idToken);
+
+      console.log("RUNN KHONG vvvv")
+      auth().signInWithCredential(googleCredential);
+
+      console.log("RUNN KHONG")
+
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_REQUIRED) {
         alert('User has not signed in yet');
@@ -90,9 +109,25 @@ export default class App extends Component{
         //Always resolves to true on iOS.
         showPlayServicesUpdateDialog: true,
       });
-      const userInfo = await GoogleSignin.signIn();
-      console.log('User Info --> ', userInfo);
-      this.setState({ userInfo: userInfo });
+      const userInfo = await GoogleSignin.signIn().then(data => {
+        console.log("DATA LA: ", data)
+
+        const googleCredential = auth.GoogleAuthProvider.credential(data.idToken);
+
+        // Sign-in the user with the credential
+        return auth().signInWithCredential(googleCredential);
+
+      }).then(currentUser => {
+        console.log("GOOGLE: ", `${JSON.stringify(currentUser)}`)
+      }).catch(e => {
+        console.log("ERROR: ", e)
+      });
+
+      // console.log('User Info --> ', userInfo);
+      // this.setState({ userInfo: userInfo });
+
+
+
     } catch (error) {
       console.log('Message', error.message);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -117,6 +152,7 @@ export default class App extends Component{
       console.error(error);
     }
   };
+
   render() {
     //returning Loader untill we check for the already signed in user
     if (this.state.gettingLoginStatus) {
@@ -155,6 +191,9 @@ export default class App extends Component{
               color={GoogleSigninButton.Color.Light}
               onPress={this._signIn}
             />
+            <TouchableOpacity onPress={() => this._signOut()}>
+              <Text>SIGN OUT</Text>
+            </TouchableOpacity>
           </View>
         );
       }
