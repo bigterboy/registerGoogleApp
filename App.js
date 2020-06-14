@@ -28,7 +28,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import auth, { firebase } from '@react-native-firebase/auth';
-
+// import iid from '@react-native-firebase/iid';
 
 import {
   GoogleSignin,
@@ -153,6 +153,11 @@ export default class App extends Component {
     }
   };
 
+  test = async () => {
+    const idTokenResult = await firebase.auth().currentUser.getIdTokenResult();
+    console.log('User JWT: ', idTokenResult);
+  }
+
   render() {
     //returning Loader untill we check for the already signed in user
     if (this.state.gettingLoginStatus) {
@@ -193,6 +198,13 @@ export default class App extends Component {
             />
             <TouchableOpacity onPress={() => this._signOut()}>
               <Text>SIGN OUT</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => {
+
+              this.test();
+            }}>
+              <Text>GET TOKEN</Text>
             </TouchableOpacity>
           </View>
         );
